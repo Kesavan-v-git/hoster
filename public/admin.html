@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Hostel Shopping Mart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen">
+        <div class="login-container">
+            <h1>Admin Login</h1>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" required>
+                </div>
+                <button type="submit" class="btn-submit">Login</button>
+            </form>
+            <div class="error-message" id="login-error"></div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-dashboard" class="admin-dashboard" style="display: none;">
+        <header>
+            <div class="container">
+                <h1>Admin Panel - Stock Management</h1>
+                <div class="admin-actions">
+                    <button class="btn-secondary" id="view-orders-btn">View Orders</button>
+                    <button class="btn-secondary" id="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Add Product Section -->
+            <section class="admin-section">
+                <h2>Add New Product</h2>
+                <form id="add-product-form" class="product-form">
+                    <div class="form-group">
+                        <label for="product-name">Product Name *</label>
+                        <input type="text" id="product-name" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-mrp">MRP (₹) *</label>
+                            <input type="number" id="product-mrp" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-price">Selling Price (₹) *</label>
+                            <input type="number" id="product-price" step="0.01" min="0" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-stock">Stock Quantity *</label>
+                            <input type="number" id="product-stock" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-category">Category</label>
+                            <input type="text" id="product-category" placeholder="e.g., Food, Beverages, Snacks">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Image URL</label>
+                        <input type="url" id="product-image" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea id="product-description" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Add Product</button>
+                </form>
+            </section>
+
+            <!-- Products List -->
+            <section class="admin-section">
+                <h2>Manage Products</h2>
+                <div id="admin-products-list" class="admin-products-list">
+                    <div class="loading">Loading products...</div>
+                </div>
+            </section>
+
+            <!-- Orders Modal -->
+            <div class="modal" id="orders-modal">
+                <div class="modal-content large">
+                    <span class="close-modal" id="close-orders-modal">&times;</span>
+                    <h2>All Orders</h2>
+                    <div id="orders-list" class="orders-list">
+                        <div class="loading">Loading orders...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDK v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="js/firebase-config.js"></script>
+
+    <!-- Admin Scripts -->
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
